@@ -1,5 +1,6 @@
 import { createServer } from 'http'
 import { init } from './db.js'
+import { initRabbit } from './rabbit.js'
 
 async function main() {
   const PORT = process.env.PORT
@@ -7,9 +8,16 @@ async function main() {
     throw 'Port not found'
   }
 
+  const rabbitManager = await initRabbit()
   const pool = await init()
 
   createServer(async (req, res) => {
+    if (req.url === '/pub') {
+      await rabbitManager.defaultPublish()
+      res.end('published')
+      return;
+    }
+
     const client = await pool.connect()
     let error;
     let status = 201;
