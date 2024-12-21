@@ -34,6 +34,10 @@ class RabbitManager {
       }
     })
     await this.channel.bindQueue(DEFAULT_QUEUE, DEFAULT_EXCHANGE, DEFAULT_QUEUE)
+
+    this.channel.consume(DEFAULT_DEAD_QUEUE, async msg => {
+      console.log(msg);
+    }, { noAck: false })
   }
 
   async reset() {

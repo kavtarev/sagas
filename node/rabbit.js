@@ -36,8 +36,21 @@ class RabbitManager {
     await this.channel.bindQueue(DEFAULT_QUEUE, DEFAULT_EXCHANGE, DEFAULT_QUEUE)
 
     this.channel.consume(DEFAULT_QUEUE, async msg => {
-      await wait(7000)
-      this.channel.nack(msg, false, false)
+      console.log('in dead');
+
+      await wait(16000)
+
+      console.log(msg.properties.headers['x-death']);
+
+      if (msg.properties.headers['x-death'].length === 1) {
+        console.log('11111111');
+
+        this.channel.nack(msg, false, false)
+      } else {
+        console.log('2222222');
+
+        this.channel.nack(msg, false, false)
+      }
     }, { noAck: false })
 
   }
