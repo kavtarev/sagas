@@ -8,7 +8,7 @@ async function main() {
     throw 'Port not found'
   }
 
-  const rabbitManager = await initRabbit()
+  // const rabbitManager = await initRabbit()
   const pool = await init()
 
   createServer(async (req, res) => {
