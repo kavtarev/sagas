@@ -23,7 +23,7 @@ func (s *Server) start() error {
 }
 
 func (s *Server) handle(w http.ResponseWriter, r *http.Request) {
-	s.db.save()
+	// s.db.save()
 
 	w.Header().Add("some", "body")
 	w.WriteHeader(404)
