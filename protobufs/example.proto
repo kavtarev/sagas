@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+message tiny {
+  string id = 1;
+}
+
+message small {
+  string id = 1;
+  int32 age = 2;
+  repeated string interests = 3;
+  bool flag = 4;
+}

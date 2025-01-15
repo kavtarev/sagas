@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ $1 -eq 1 ]; then
+  name="server.js"
+elif [ $1 -eq 2 ]; then
+  name="server_buffer.js"
+else
+  echo "incorrect type 1 or 2" >&2
+  return
+fi
+
+case $2 in
+  tiny|small|medium|large)
+    ;;
+  *)
+    echo "Error: Invalid second argument. Expected one of: tiny small medium large." >&2
+    return
+    ;;
+esac
+
+if ! [[ "$3" =~ ^[0-9]+$ ]]; then
+  echo "Error: Invalid third argument. Expected a number." >&2
+  return
+fi
+
+node $name $2 $3

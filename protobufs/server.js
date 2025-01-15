@@ -1,14 +1,8 @@
-const { randomUUID } = require('crypto');
 const { request, createServer } = require('http');
+const json_s = require('./json_examples')
 
-const { 2: amount, 3: level } = process.argv;
-if (!amount || !level) {
-  console.error('amount and level required')
-  process.exit(9)
-}
-console.log(`amount: ${amount}\nlevel: ${level}`);
-
-const ids = new Array(amount).fill(0).map(() => randomUUID());
+const { 2: level, 3: amount } = process.argv;
+const jsonObject = json_s[level]
 
 createServer((req, res) => {
   const data = [];
@@ -37,7 +31,7 @@ function makeRequest() {
       }
     );
 
-    backReq.write('start');
+    backReq.write(JSON.stringify(jsonObject));
     backReq.end();
   });
 }
