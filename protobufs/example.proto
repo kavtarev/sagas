@@ -10,3 +10,10 @@ message small {
   repeated string interests = 3;
   bool flag = 4;
 }
+
+message small_numbers {
+  string id = 1;
+  int32 age = 2;
+  repeated int32 interests = 3 [packed = true]; // packed ускоряет обработку чисел!
+  bool flag = 4;
+}

@@ -1,19 +1,19 @@
 #!/bin/sh
 
 if [ $1 -eq 1 ]; then
-  name="server.js"
+  echo "selected default type\n"
 elif [ $1 -eq 2 ]; then
-  name="server_buffer.js"
+  echo "selected proto type\n"
 else
   echo "incorrect type 1 or 2" >&2
   return
 fi
 
 case $2 in
-  tiny|small|medium|large)
+  tiny|small|small_numbers|medium|large)
     ;;
   *)
-    echo "Error: Invalid second argument. Expected one of: tiny small medium large." >&2
+    echo "Error: Invalid second argument. Expected one of: tiny small small_numbers medium large." >&2
     return
     ;;
 esac
@@ -23,4 +23,4 @@ if ! [[ "$3" =~ ^[0-9]+$ ]]; then
   return
 fi
 
-node $name $2 $3
+node server.js $1 $2 $3

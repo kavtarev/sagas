@@ -9,4 +9,11 @@ const small = {
   flag: false
 }
 
-module.exports = { tiny, small }
+const small_numbers = {
+  id: randomUUID(),
+  age: 42,
+  interests: Array.from({ length: 10000 }, (_, i) => i),
+  flag: true
+};
+
+module.exports = { tiny, small, small_numbers }
