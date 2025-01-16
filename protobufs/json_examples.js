@@ -16,4 +16,20 @@ const small_numbers = {
   flag: true
 };
 
-module.exports = { tiny, small, small_numbers }
+const medium = {
+  id: randomUUID(),
+  name1: 'some',
+  name2: 'some',
+  name3: 'some',
+  flag1: false,
+  flag2: false,
+  flag3: false,
+  age1: 1,
+  age2: 1,
+  age3: 1,
+  small1: small,
+  small2: small,
+  small3: small,
+}
+
+module.exports = { tiny, small, small_numbers, medium }

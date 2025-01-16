@@ -17,3 +17,19 @@ message small_numbers {
   repeated int32 interests = 3 [packed = true]; // packed ускоряет обработку чисел!
   bool flag = 4;
 }
+
+message medium {
+  string id = 1;
+  string name1 = 2;
+  string name2 = 3;
+  string name3 = 4;
+  bool flag1 = 5;
+  bool flag2 = 6;
+  bool flag3 = 7;
+  int32 age1 = 8;
+  int32 age2 = 9;
+  int32 age3 = 10;
+  small small1 = 11;
+  small small2 = 12;
+  small small3 = 13;
+}
